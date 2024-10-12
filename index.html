@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<style> 
+
+
+    * {
+        font-family: 'Courier New', Courier, monospace;
+        margin: 0px;
+
+    }
+    
+.body1 {
+    background-color: rgb(0, 0, 0);
+    
+    padding: 69px;
+    color: chartreuse;
+
+   
+    
+
+
+}
+
+input{
+    font-size: 28px;
+    
+}
+
+button {
+    background-color: rgb(49, 226, 43);
+    height: 50px;
+
+}
+
+p{
+font-size: 30px;
+font-family: Arial, Helvetica, sans-serif;
+font-style: bold;
+
+
+}
+
+h1{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 120px;
+
+    font-style: italic;
+    margin-top: 6px;
+    margin-bottom: 0px;
+}
+
+img {
+    width: 100%;
+}
+
+h4 {
+    font-size: 120px;
+    color: grey;
+    margin-bottom: 30px;
+}
+
+.horizontal {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.inputDiv {
+    width: 30%;
+}
+</style>
+
+
+<body class="body1"> 
+    <p>Hallo Marcos</p>
+    <h1>tmi calculator</h1>
+
+    <div class="horizontal"> 
+        <div class="inputDiv"> 
+            <p> länge in cm</p>
+            <input type="text" id="laenge">
+        </div>
+
+        <div class="inputDiv"> 
+            <p> durchmesser in cm</p>
+            <input type="text" id="durchmesser">
+        </div>
+
+        <div class="inputDiv"> 
+         <p> gewicht in gramm</p>
+         <input type="text" id="gewicht">
+        </div>
+
+        <div class="inputDiv"> 
+         <p> umfang in cm</p>
+         <input type="text" id="umfang">
+        </div>
+
+        <div class="inputDiv"> 
+            <p> spitzwinkel in grad°</p>
+            <input type="text" id="spitzgrad">
+        </div>
+    </div>
+
+    <button id="submit"> drück</button>
+
+
+    <h3>Resultat</h3>
+    <h4 id="showResult"> give input</h4>
+
+    <h4 id="showFeedback"> </h4>
+
+
+    <img src="/Users/dimi_personal/Desktop/chetteraucher.png" alt="" id="imgChange">
+    <h1>andere titel</h1>
+</body>
+
+
+<script>
+
+    var laenge= 10;
+    var durchmesser=5;
+    var gewicht=10;
+    var umfang=10;
+    var spitzwinkel=10;
+
+    var submitButton=document.getElementById('submit')
+
+    var laengeInput= document.getElementById('laenge')
+    var durchmesserInput= document.getElementById('durchmesser')
+    var gewichtInput= document.getElementById('gewicht')
+    var umfangInput= document.getElementById('umfang')
+    var spitzwinkelInput= document.getElementById('spitzgrad')
+
+    var showResult=document.getElementById('showResult');
+
+    var showFeedback= document.getElementById('showFeedback')
+    var imgChange= document.getElementById('imgChange');
+
+
+
+
+
+
+    
+
+
+
+function calculateResult () {
+    laenge=laengeInput.value;
+    durchmesser=durchmesserInput.value;
+    gewicht=gewichtInput.value;
+    umfang=umfangInput.value;
+    spitzwinkel=spitzwinkelInput.value;
+
+    var resultat= Math.ceil(((laenge * durchmesser) + (gewicht / umfang)) / (spitzwinkel*spitzwinkel))
+    showResult.innerText= resultat;
+    showResult.style.color='white'
+    // alert(resultat)
+
+    if (resultat<=4) {
+        showFeedback.innerText='chline schniebel'
+        showFeedback.style.color='red';
+        imgChange.src='/Users/dimi_personal/Dropbox (Privat)/Agentur/Kunden/sandchaste/marco/tmi/angry.jpg'
+    }
+    else if (resultat>=5 && resultat<7){ 
+        showFeedback.innerText='küssbare schniebel'
+        showFeedback.style.color='yellow';
+        imgChange.src='/Users/dimi_personal/Dropbox (Privat)/Agentur/Kunden/sandchaste/marco/tmi/average.png'
+
+    }
+    else {
+        showFeedback.innerText='randy marsh schniebel'
+        showFeedback.style.color='green';      
+        imgChange.src='/Users/dimi_personal/Dropbox (Privat)/Agentur/Kunden/sandchaste/marco/tmi/yes.png'
+
+    }
+}
+
+
+submitButton.addEventListener('click', calculateResult )
+
+
+
+</script>
+
+</html>
